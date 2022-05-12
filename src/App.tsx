@@ -1,15 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Webcam from "react-webcam";
 
 import "./App.css";
-import model from "./app/model";
+
+import useHandResults from "./app/hooks/useHandResults";
 
 function App() {
   const webcamRef = useRef(null);
-  useEffect(() => {
-    model(webcamRef);
-  }, []);
-
+  useHandResults(webcamRef);
   return (
     <div className="App">
       <header className="App-header">

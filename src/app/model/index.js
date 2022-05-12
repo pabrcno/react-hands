@@ -1,5 +1,4 @@
 import "@tensorflow/tfjs-backend-webgl";
-import * as mpHands from "@mediapipe/hands";
 import * as params from "./params";
 import * as tfjsWasm from "@tensorflow/tfjs-backend-wasm";
 
@@ -56,19 +55,12 @@ async function handsResult(webcamRef) {
         detector = null;
         alert(error);
       }
-      console.log(hands);
       return hands;
     }
   }
 }
 
-async function handsPrediction(webcamRef) {
-  setInterval(async () => {
-    await handsResult(webcamRef);
-  }, 10);
-}
-
-async function model(webcamRef) {
+async function model() {
   // Gui content will change depending on which model is in the query string.
 
   params.STATE.model = handdetection.SupportedModels.MediaPipeHands;
@@ -78,7 +70,6 @@ async function model(webcamRef) {
   await setBackendAndEnvFlags(STATE.flags, STATE.backend);
 
   detector = await createDetector();
-
-  handsPrediction(webcamRef);
 }
-export default model;
+model();
+export default handsResult;
