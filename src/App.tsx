@@ -22,6 +22,8 @@ function App() {
             textAlign: "center",
             width: "100vw",
             height: "100vh",
+            zIndex: -1,
+            visibility: "hidden",
           }}
         />
       </header>
