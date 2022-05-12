@@ -1,3 +1,16 @@
+# React hands
+
+This is an under construction project 🏗️ that pretends to open a new dimension for web experiences. You will be able to use your hands to interact in a 3d environment. 🙌🏼
+
+## <a href="https://pabrcno.github.io/react-hands">Use the demo 🤖</a>
+
+### Powered by 💪🏼:
+
+<ul>
+<li> <a href="https://github.com/pmndrs/react-three-fiber">pmndrs/react-three-fiber</a></li>
+<li> <a href="https://github.com/tensorflow/tfjs-models">tensorflow/tfjs-models</a></li>
+</ul>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
