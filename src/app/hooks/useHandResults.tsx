@@ -8,7 +8,10 @@ const useHandResults = (webcamRef: unknown) => {
   useEffect(() => {
     setInterval(async () => {
       dispatch(setHands(await handsResult(webcamRef)));
-    }, 10);
+    }, 33);
+    return () => {
+      clearInterval();
+    };
   }, [dispatch, webcamRef]);
 };
 export default useHandResults;

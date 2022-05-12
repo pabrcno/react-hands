@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-three/drei": "^9.7.1",
+    "@react-three/fiber": "^8.0.13",
+    "three": "^0.140.0",
+    "@types/three": "^0.140.0",
     "@mediapipe/hands": "~0.4.0",
     "@reduxjs/toolkit": "^1.8.1",
     "@tensorflow-models/handpose": "0.0.7",

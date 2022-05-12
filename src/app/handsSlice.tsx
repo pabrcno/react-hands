@@ -1,7 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+type Hand = {
+  handedness: "Left" | "Right";
+  keypoints: Array<{
+    x: number;
+    y: number;
+  }>;
+  keypoints3D: Array<{
+    x: number;
+    y: number;
+    z: number;
+  }>;
+  score: number;
+};
 type handsState = {
-  hands: Array<unknown>;
+  hands: Array<Hand>;
 };
 
 const initialState: handsState = {
@@ -12,9 +25,10 @@ const handsSlice = createSlice({
   name: "hands",
   initialState,
   reducers: {
-    setHands: (state: handsState, action: { payload: Array<unknown> }) => {
-      console.log(action.payload);
-      state.hands = action.payload;
+    setHands: (state: handsState, action: { payload: Array<Hand> }) => {
+      if (action.payload) {
+        state.hands = action.payload;
+      }
     },
   },
 });

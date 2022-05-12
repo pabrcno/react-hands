@@ -18,7 +18,7 @@ async function createDetector() {
   return handdetection.createDetector(model, {
     runtime,
     modelType: STATE.modelConfig.type,
-    maxHands: STATE.modelConfig.maxNumHands,
+    maxHands: 1,
   });
 }
 
