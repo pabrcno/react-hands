@@ -22,7 +22,6 @@ async function createDetector() {
   });
 }
 
-// IMPORTANT!! key function to get handpoints
 async function handsResult(webcamRef) {
   if (
     typeof webcamRef.current !== "undefined" &&
