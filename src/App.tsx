@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import "./App.css";
-import { useAppDispatch, useAppSelector } from "./app/hooks";
+import { useAppSelector } from "./app/hooks";
 import { RootState } from "./app/store";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";

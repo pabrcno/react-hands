@@ -1,6 +1,4 @@
 import { MeshReflectorMaterial, Sphere } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
 
 type Props = {
   position: { x: number; y: number; z: number };
