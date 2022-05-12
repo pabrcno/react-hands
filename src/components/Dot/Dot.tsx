@@ -4,11 +4,11 @@ type Props = {
   position: { x: number; y: number; z: number };
   handedness: "Left" | "Right";
 };
-const separationFactor = 10;
+const separationFactor = 20;
 export const Dot = ({ position, handedness }: Props) => {
   return (
     <Sphere
-      args={[0.05]}
+      args={[0.1]}
       position={[
         position.x * -separationFactor,
         position.y * -separationFactor,
