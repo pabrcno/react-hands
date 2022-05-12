@@ -1,6 +1,6 @@
 # React Hands 👐🏼
 
-This is an under construction project 🏗️ that pretends to open a new dimension for web experiences. You will be able to use your hands to interact in a 3d environment. 🙌🏼
+This is an under construction project 🏗️ that pretends to open a new dimension for web experiences. You will be able to use your hands to interact in a 3d browser environment. 🙌🏼
 
 ## <a href="https://pabrcno.github.io/react-hands">Use the demo 🤖</a>
 
