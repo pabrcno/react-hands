@@ -6,12 +6,11 @@ import { useAppDispatch } from "./../hooks";
 const useHandResults = (webcamRef: unknown) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    setInterval(async () => {
+    requestAnimationFrame(async () => {
       dispatch(setHands(await handsResult(webcamRef)));
-    }, 33);
-    return () => {
-      clearInterval();
-    };
+      useHandResults();
+    });
+   
   }, [dispatch, webcamRef]);
 };
 export default useHandResults;
