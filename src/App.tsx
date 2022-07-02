@@ -43,16 +43,17 @@ function App() {
           <Stars
             radius={100}
             depth={50}
-            count={5000}
+            count={1000}
             factor={4}
             saturation={0}
             fade
             speed={1}
           />
 
-          <group>
-            {hands.hands.map((hand) =>
-              hand.keypoints3D.map((point) => (
+          <group position={[3, -1, -1]}>
+            {hands.hands.map((hand) => {
+              if (hand.handedness === "Right") return;
+              return hand.keypoints3D.map((point) => (
                 <Dot
                   key={`${point.x}-${point.y}-${point.z}-${hand.handedness}`}
                   position={{
@@ -62,8 +63,24 @@ function App() {
                   }}
                   handedness={hand.handedness}
                 />
-              ))
-            )}
+              ));
+            })}
+          </group>
+          <group position={[-3, -1, -1]}>
+            {hands.hands.map((hand) => {
+              if (hand.handedness === "Left") return;
+              return hand.keypoints3D.map((point) => (
+                <Dot
+                  key={`${point.x}-${point.y}-${point.z}-${hand.handedness}`}
+                  position={{
+                    x: point.x,
+                    y: point.y,
+                    z: point.z,
+                  }}
+                  handedness={hand.handedness}
+                />
+              ));
+            })}
           </group>
         </Canvas>
       </div>
