@@ -4,13 +4,14 @@ import { useAppSelector } from "./app/hooks";
 import { RootState } from "./app/store";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
-import { Text } from "@react-three/drei/core/Text";
+
 import Webcam from "react-webcam";
 
 import "./App.css";
 
 import useHandResults from "./app/hooks/useHandResults";
 import { Dot } from "./components/Dot/Dot";
+import { WelcomeText } from "./components/WelcomeText/WelcomeText";
 
 function App() {
   const webcamRef = useRef(null);
@@ -50,23 +51,7 @@ function App() {
             fade
             speed={1}
           />
-          {!hands.hands.length && (
-            <group position={[0, 0, 0]}>
-              <Text fontSize={0.3}>
-                Show me your hands!
-                <meshNormalMaterial />
-              </Text>
-              <Text fontSize={0.2} position={[0, -0.5, 0]}>
-                Orbit controls are ON!
-                <meshNormalMaterial />
-              </Text>
-              <Text fontSize={0.15} position={[0, -1, 0]}>
-                You might have to wait a couple of seconds for the camera to
-                load
-                <meshNormalMaterial />
-              </Text>
-            </group>
-          )}
+          {!hands.hands.length && <WelcomeText />}
 
           <group position={[3, -1, -1]}>
             {hands.hands.map((hand) => {
