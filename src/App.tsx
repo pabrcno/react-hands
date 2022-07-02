@@ -53,7 +53,7 @@ function App() {
           />
           {!hands.hands.length && <WelcomeText />}
 
-          <group position={[3, -1, -1]}>
+          <group position={[3, -1, 0]}>
             {hands.hands.map((hand) => {
               if (hand.handedness === "Right") return;
               return hand.keypoints3D.map((point) => (
@@ -69,7 +69,7 @@ function App() {
               ));
             })}
           </group>
-          <group position={[-3, -1, -1]}>
+          <group position={[-3, -1, 0]}>
             {hands.hands.map((hand) => {
               if (hand.handedness === "Left") return;
               return hand.keypoints3D.map((point) => (
