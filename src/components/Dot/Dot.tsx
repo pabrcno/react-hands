@@ -1,4 +1,4 @@
-import { MeshReflectorMaterial, Sphere } from "@react-three/drei";
+import { Sphere } from "@react-three/drei";
 
 type Props = {
   position: { x: number; y: number; z: number };
