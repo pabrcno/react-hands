@@ -15,6 +15,7 @@ let detector;
 async function createDetector() {
   const model = handdetection.SupportedModels.MediaPipeHands;
   const runtime = "tfjs";
+
   return handdetection.createDetector(model, {
     runtime,
     modelType: STATE.modelConfig.type,
@@ -48,6 +49,7 @@ async function handsResult(webcamRef) {
       try {
         hands = await detector.estimateHands(video, {
           flipHorizontal: false,
+          staticImageMode: false,
         });
       } catch (error) {
         detector.dispose();
