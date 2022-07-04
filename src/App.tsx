@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import "./App.css";
 import { useAppSelector } from "./app/hooks";
 import { RootState } from "./app/store";
