@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
 import { useAppSelector } from "./app/hooks";
 import { RootState } from "./app/store";
@@ -16,6 +16,7 @@ import { WelcomeText } from "./components/WelcomeText/WelcomeText";
 function App() {
   const webcamRef = useRef(null);
   const hands = useAppSelector((state: RootState) => state.hands);
+
   useHandResults(webcamRef);
   return (
     <div className="App">
@@ -53,38 +54,25 @@ function App() {
           />
           {!hands.hands.length && <WelcomeText />}
 
-          <group position={[3, -1, 0]}>
-            {hands.hands.map((hand) => {
-              if (hand.handedness === "Right") return;
-              return hand.keypoints3D.map((point) => (
-                <Dot
-                  key={`${point.x}-${point.y}-${point.z}-${hand.handedness}`}
-                  position={{
-                    x: point.x,
-                    y: point.y,
-                    z: point.z,
-                  }}
-                  handedness={hand.handedness}
-                />
-              ));
-            })}
-          </group>
-          <group position={[-3, -1, 0]}>
-            {hands.hands.map((hand) => {
-              if (hand.handedness === "Left") return;
-              return hand.keypoints3D.map((point) => (
-                <Dot
-                  key={`${point.x}-${point.y}-${point.z}-${hand.handedness}`}
-                  position={{
-                    x: point.x,
-                    y: point.y,
-                    z: point.z,
-                  }}
-                  handedness={hand.handedness}
-                />
-              ));
-            })}
-          </group>
+          {hands.hands.map((hand) => {
+            return (
+              <group
+                position={[hand.xPosition, hand.yPosition, hand.zPosition]}
+              >
+                {hand.keypoints3D.map((point) => (
+                  <Dot
+                    key={`${point.x}-${point.y}-${point.z}-${hand.handedness}`}
+                    position={{
+                      x: point.x,
+                      y: point.y,
+                      z: point.z,
+                    }}
+                    handedness={hand.handedness}
+                  />
+                ))}
+              </group>
+            );
+          })}
         </Canvas>
       </div>
     </div>
