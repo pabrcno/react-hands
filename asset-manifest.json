@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-hands/static/css/main.5ee50965.css",
-    "main.js": "/react-hands/static/js/main.be89bece.js",
+    "main.js": "/react-hands/static/js/main.b37a7c2e.js",
     "static/js/787.242045ad.chunk.js": "/react-hands/static/js/787.242045ad.chunk.js",
     "index.html": "/react-hands/index.html",
     "main.5ee50965.css.map": "/react-hands/static/css/main.5ee50965.css.map",
-    "main.be89bece.js.map": "/react-hands/static/js/main.be89bece.js.map",
+    "main.b37a7c2e.js.map": "/react-hands/static/js/main.b37a7c2e.js.map",
     "787.242045ad.chunk.js.map": "/react-hands/static/js/787.242045ad.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5ee50965.css",
-    "static/js/main.be89bece.js"
+    "static/js/main.b37a7c2e.js"
   ]
 }
