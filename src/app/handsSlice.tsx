@@ -31,16 +31,17 @@ const handsSlice = createSlice({
     setHands: (state: handsState, action: { payload: Array<Hand> }) => {
       if (action.payload) {
         const newHands = action.payload.map((hand: Hand) => {
-          //TODO: GENERALIZE THIS PIECE OF CRAP
-          const handArea =
-            hand.keypoints[0].x -
-            hand.keypoints[9].x +
-            (hand.keypoints[0].y - hand.keypoints[9].y);
+          const distanceCentralPoints = Math.sqrt(
+            (hand.keypoints[9].x - hand.keypoints[0].x) ** 2 +
+              (hand.keypoints[9].y - hand.keypoints[0].y) ** 2 +
+              (hand.keypoints3D[9].z - hand.keypoints3D[0].z) ** 2
+          );
 
-          const zPosition = -(handArea * 0.05) + 2;
-          const xPosition = -(hand.keypoints[9].x * 0.025) + 8;
-          const yPosition = -(hand.keypoints[9].y * 0.01) + 2;
-          console.log(hand.keypoints[9].x, hand.keypoints[9].y);
+          console.log(hand);
+          const zPosition = -(distanceCentralPoints * 0.05);
+          const xPosition = -(hand.keypoints[9].x * 0.025) + 5;
+          const yPosition = -(hand.keypoints[9].y * 0.025) + 2;
+
           return {
             ...hand,
             zPosition,
