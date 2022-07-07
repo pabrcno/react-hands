@@ -40,13 +40,11 @@ function App() {
       <div className="mainContainer">
         <Canvas>
           <ambientLight intensity={0.5} />
-          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-          <pointLight position={[-10, -10, -10]} />
           <OrbitControls />
           <Stars
-            radius={100}
-            depth={50}
-            count={1000}
+            radius={25}
+            depth={10}
+            count={250}
             factor={4}
             saturation={0}
             fade

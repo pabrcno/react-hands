@@ -16,7 +16,7 @@ export const Dot = ({ position, handedness }: Props) => {
       ]}
     >
       <meshBasicMaterial
-        color={handedness === "Left" ? "#ff00ff" : "#ffffff"} // Color of the reflection
+        color={handedness === "Left" ? "#ff00ff" : "#ffffff"}
       />
     </Sphere>
   );
