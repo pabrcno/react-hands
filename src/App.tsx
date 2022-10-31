@@ -57,26 +57,13 @@ function App() {
 
           {hands.hands.map((hand) => {
             return (
-              <group
-                position={[hand.xPosition, hand.yPosition, hand.zPosition]}
-              >
-                {hand.keypoints3D.map((point) => (
-                  <Dot
-                    key={`${point.x}-${point.y}-${point.z}-${hand.handedness}`}
-                    position={{
-                      x: point.x,
-                      y: point.y,
-                      z: point.z,
-                    }}
-                    handedness={hand.handedness}
-                  />
-                ))}
-              </group>
+              <Suspense fallback={null}>
+                <Hand
+                  position={[hand.xPosition, hand.yPosition, hand.zPosition]}
+                />
+              </Suspense>
             );
           })}
-          <Suspense fallback={null}>
-            <Hand />
-          </Suspense>
         </Canvas>
       </div>
     </div>

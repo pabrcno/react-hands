@@ -13,6 +13,7 @@ import handUrl from "./assets/hand_for_vr.glb";
 export default function Hand(props) {
   const group = useRef();
   const { nodes, materials } = useGLTF(handUrl);
+  console.log(props.position);
   return (
     <group ref={group} {...props} dispose={null} scale={[0.1, 0.1, 0.1]}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
