@@ -1,9 +1,9 @@
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 import "./App.css";
 import { useAppSelector } from "./app/hooks";
 import { RootState } from "./app/store";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { OrbitControls, Stars, useGLTF } from "@react-three/drei";
 
 import Webcam from "react-webcam";
 
@@ -13,8 +13,11 @@ import useHandResults from "./app/hooks/useHandResults";
 import { Dot } from "./components/Dot/Dot";
 import { WelcomeText } from "./components/WelcomeText/WelcomeText";
 
+import Hand from "./Scene";
+
 function App() {
   const webcamRef = useRef(null);
+
   const hands = useAppSelector((state: RootState) => state.hands);
 
   useHandResults(webcamRef);
@@ -71,6 +74,9 @@ function App() {
               </group>
             );
           })}
+          <Suspense fallback={null}>
+            <Hand />
+          </Suspense>
         </Canvas>
       </div>
     </div>
