@@ -6,6 +6,8 @@ import "./App.css";
 
 import { Hands } from "./components/Hands";
 
+import Hand from "./Scene";
+
 function App() {
   return (
     <div className="App">
