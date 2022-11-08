@@ -19,7 +19,7 @@ function App() {
   const webcamRef = useRef(null);
 
   const hands = useAppSelector((state: RootState) => state.hands);
-
+  const hand = hands.hands[0];
   useHandResults(webcamRef);
   return (
     <div className="App">
@@ -53,17 +53,17 @@ function App() {
             fade
             speed={1}
           />
-          {!hands.hands.length && <WelcomeText />}
 
-          {hands.hands.map((hand) => {
-            return (
+          {hand && (
+            <group
+              position={[hand.xPosition, hand.yPosition, hand.zPosition]}
+              rotation={[0, 0, 0]}
+            >
               <Suspense fallback={null}>
-                <Hand
-                  position={[hand.xPosition, hand.yPosition, hand.zPosition]}
-                />
+                <Hand hand={hand} />
               </Suspense>
-            );
-          })}
+            </group>
+          )}
         </Canvas>
       </div>
     </div>

@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/Scene.js"]
+  "include": ["src", "src/Scene.ts"]
 }

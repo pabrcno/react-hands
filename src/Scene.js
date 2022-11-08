@@ -6,19 +6,32 @@ source: https://sketchfab.com/3d-models/hand-for-vr-bee4147a048e41aeb70158f43017
 title: Hand for VR
 */
 
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import handUrl from "./assets/hand_for_vr.glb";
 
 export default function Hand(props) {
   const group = useRef();
-  const { nodes, materials } = useGLTF(handUrl);
-  console.log(props.position);
+  let { nodes, materials } = useGLTF(handUrl);
+
   return (
     <group ref={group} {...props} dispose={null} scale={[0.1, 0.1, 0.1]}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
-        <group rotation={[Math.PI / 2, 0, 0]}>
-          <group rotation={[-Math.PI / 2, 0, 0]} scale={[100, 100, 100]}>
+      <group rotation={[0, 0, 0]}>
+        <group rotation={[0, 0, 0]}>
+          <group
+            rotation={[
+              0,
+
+              ((props.hand.keypoints3D[2].x - props.hand.keypoints3D[17].x) *
+                12.5 *
+                -Math.PI) /
+                2,
+              (props.hand.keypoints3D[0].y - props.hand.keypoints3D[9].y) *
+                12.5 *
+                -Math.PI,
+            ]}
+            scale={[100, 100, 100]}
+          >
             <primitive object={nodes._rootJoint} />
             <skinnedMesh
               geometry={nodes.Object_27.geometry}
@@ -31,5 +44,3 @@ export default function Hand(props) {
     </group>
   );
 }
-
-useGLTF.preload(handUrl);
