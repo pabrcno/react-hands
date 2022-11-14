@@ -37,7 +37,7 @@ const handsSlice = createSlice({
               (hand.keypoints3D[9].z - hand.keypoints3D[0].z) ** 2
           );
 
-          const zPosition = -distanceCentralPoints * 0.05;
+          const zPosition = -distanceCentralPoints * 0.05 + 2;
           const xPosition = -hand.keypoints[9].x * 0.025 + 5;
           const yPosition = -hand.keypoints[9].y * 0.025 + 7;
 

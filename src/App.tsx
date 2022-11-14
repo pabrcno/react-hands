@@ -54,7 +54,7 @@ function App() {
             speed={1}
           />
 
-          {hand && (
+          {hand?.handedness === "Left" && (
             <group
               position={[hand.xPosition, hand.yPosition, hand.zPosition]}
               rotation={[0, 0, 0]}

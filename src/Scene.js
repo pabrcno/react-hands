@@ -10,9 +10,56 @@ import { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import handUrl from "./assets/hand_for_vr.glb";
 
+const calculate3DSlope = (p1, p2) => {
+  const xDiff = Math.abs(p2.x - p1.x);
+  const yDiff = Math.abs(p2.y - p1.y);
+  const zDiff = Math.abs(p2.z - p1.z);
+
+  const x = xDiff;
+  const y = yDiff;
+  const z = zDiff;
+
+  // calculate the slope
+  const slope = Math.atan2(y, x);
+
+  return slope;
+};
+
+const getBonesSlopes = (hand, nodes) => {
+  //create a loop to iterate through all the bones and set their rotation
+  nodes.Object_27.skeleton.bones.forEach((bone, index) => {
+    console.log(!hand.keypoints3D[index + 1]);
+    if (
+      index < 3 ||
+      index === 5 ||
+      index === 9 ||
+      index === 13 ||
+      index === 17 ||
+      !hand.keypoints3D[index + 1]
+    )
+      return;
+
+    console.log("pass return");
+    const slope = calculate3DSlope(
+      hand.keypoints3D[index],
+      hand.keypoints3D[index + 1]
+    );
+
+    if (slope) {
+      if (bone.name.includes("thumb")) {
+        bone.rotation.x = -slope * 0.5;
+        return;
+      }
+      bone.rotation.x = slope - Math.PI / 2;
+    }
+  });
+};
+
 export default function Hand(props) {
   const group = useRef();
   let { nodes, materials } = useGLTF(handUrl);
+
+  getBonesSlopes(props.hand, nodes);
 
   return (
     <group ref={group} {...props} dispose={null} scale={[0.1, 0.1, 0.1]}>
@@ -33,6 +80,7 @@ export default function Hand(props) {
             scale={[100, 100, 100]}
           >
             <primitive object={nodes._rootJoint} />
+
             <skinnedMesh
               geometry={nodes.Object_27.geometry}
               material={materials.skin}
