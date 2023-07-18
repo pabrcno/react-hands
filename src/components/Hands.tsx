@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import useHandResults from "../app/hooks/useHandResults";
-import { Dot } from "./Dot/Dot";
+import { Dot } from "./Dot";
 
 import { Html } from "@react-three/drei";
 import Webcam from "react-webcam";

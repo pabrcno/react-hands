@@ -14,6 +14,9 @@ export const Dot = ({ position, handedness }: Props) => {
         position.y * -separationFactor,
         position.z * separationFactor,
       ]}
+      matrixWorldAutoUpdate={undefined}
+      getObjectsByProperty={undefined}
+      getVertexPosition={undefined}
     >
       <meshBasicMaterial
         color={handedness === "Left" ? "#ff00ff" : "#ffffff"}
