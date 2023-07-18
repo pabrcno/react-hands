@@ -17,8 +17,8 @@ type GLTFResult = GLTF & {
   };
 };
 
-export function RightHand(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/hand_right.glb") as GLTFResult;
+export function LeftHand(props: JSX.IntrinsicElements["group"]) {
+  const { nodes, materials } = useGLTF("/hand_left.glb") as GLTFResult;
   return (
     <group {...props} dispose={null}>
       <group scale={1}>
@@ -35,4 +35,4 @@ export function RightHand(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/hand_right.glb");
+useGLTF.preload("/hand_left.glb");

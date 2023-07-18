@@ -1,6 +1,6 @@
 import handsResult from "../model";
 import { useFrame } from "@react-three/fiber";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Hand = {
   handedness: "Left" | "Right";
@@ -14,6 +14,22 @@ type Hand = {
 
 const useHandResults = (webcamRef: unknown) => {
   const [hands, setHands] = useState<Hand[]>([]);
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const updateHands = async () => {
     const newHandsResults = await handsResult(webcamRef);
@@ -26,10 +42,17 @@ const useHandResults = (webcamRef: unknown) => {
             (hand.keypoints3D[9].z - hand.keypoints3D[0].z) ** 2
         );
 
-        const zPosition = -(distanceCentralPoints * 0.05);
-        const xPosition = -(hand.keypoints[9].x * 0.025) + 8;
-        const yPosition = -(hand.keypoints[9].y * 0.025) + 4;
-
+        const zPosition = -(distanceCentralPoints * 0.5);
+        const xPosition = -(hand.keypoints[9].x / windowDimensions.width);
+        const yPosition = -(hand.keypoints[9].y / windowDimensions.height) + 4;
+        console.log(
+          "xPosition",
+          xPosition,
+          "yPosition",
+          yPosition,
+          "zPosition",
+          zPosition
+        );
         return {
           ...hand,
           zPosition,

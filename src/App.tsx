@@ -10,9 +10,12 @@ function App() {
   return (
     <div className="App">
       <div className="mainContainer">
-        <Canvas>
+        <Canvas
+          style={{
+            background: "radial-gradient(#000, #303030)",
+          }}
+        >
           <ambientLight intensity={0.5} />
-          <OrbitControls />
 
           <Hands />
         </Canvas>
