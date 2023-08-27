@@ -27,8 +27,8 @@ const useHandResults = (webcamRef: unknown) => {
         );
 
         const zPosition = -(distanceCentralPoints * 0.05);
-        const xPosition = -(hand.keypoints[9].x * 0.025) + 8;
-        const yPosition = -(hand.keypoints[9].y * 0.025) + 4;
+        const xPosition = -(hand.keypoints[9].x * 0.05) + 12;
+        const yPosition = -(hand.keypoints[9].y * 0.05) + 4;
 
         return {
           ...hand,

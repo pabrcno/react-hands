@@ -1,12 +1,10 @@
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Stats } from "@react-three/drei";
 
 import "./App.css";
 
 import { Hands } from "./components/Hands";
-
-import Hand from "./Scene";
 
 function App() {
   return (
@@ -14,7 +12,7 @@ function App() {
       <div className="mainContainer">
         <Canvas>
           <ambientLight intensity={0.5} />
-          <OrbitControls />
+          <Stats />
 
           <Hands />
         </Canvas>
